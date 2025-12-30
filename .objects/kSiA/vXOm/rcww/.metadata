@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome Saurin-14RPAProject",
+  "Type": "Screen",
+  "Id": "rcwwQ_FslEGxP-ctNnbZow",
+  "Reference": "HziBb6DqZUW3HDpqysOHJQ/rcwwQ_FslEGxP-ctNnbZow",
+  "ParentRef": "HziBb6DqZUW3HDpqysOHJQ/vXOmgE4iekWnEdOVgCXwYg",
+  "Created": "2025-12-30T06:25:52.3523982Z",
+  "Updated": "2025-12-30T06:25:52.3523982Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.22.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
