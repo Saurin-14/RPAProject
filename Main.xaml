@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -40,13 +40,6 @@
       <x:String>UiPath.UIAutomationNext.Contracts</x:String>
       <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
       <x:String>System.Reflection</x:String>
-      <x:String>UiPath.Excel</x:String>
-      <x:String>UiPath.Platform.ResourceHandling</x:String>
-      <x:String>UiPath.Database</x:String>
-      <x:String>UiPath.Excel.Activities</x:String>
-      <x:String>UiPath.Shared.Activities.Business</x:String>
-      <x:String>UiPath.Database.Activities</x:String>
-      <x:String>System.Activities.Runtime.Collections</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -106,40 +99,64 @@
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1177.2,1087.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1177.2,1610.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Initialize" sap:VirtualizedContainerService.HintSize="517.6,1064" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence DisplayName="Initialize" sap:VirtualizedContainerService.HintSize="517.6,1587.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadCell WorkbookPathResource="{x:Null}" Cell="B1" DisplayName="Read Cell 'MailAccount'" sap:VirtualizedContainerService.HintSize="484,120" sap2010:WorkflowViewState.IdRef="ReadCell_1" SheetName="Sheet1" WorkbookPath="Config.xlsx">
+      <Assign sap:VirtualizedContainerService.HintSize="484,174.4" sap2010:WorkflowViewState.IdRef="Assign_8">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[NewDTInput]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable">[New System.Data.DataTable]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="484,174.4" sap2010:WorkflowViewState.IdRef="Assign_9">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[FilterDtInput]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable">[New System.Data.DataTable]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="484,174.4" sap2010:WorkflowViewState.IdRef="Assign_10">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[NewDTInputInActive]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable">[New System.Data.DataTable]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:ReadCell WorkbookPathResource="{x:Null}" Cell="B1" DisplayName="Read Cell 'MailAccount'" sap:VirtualizedContainerService.HintSize="484,120" sap2010:WorkflowViewState.IdRef="ReadCell_5" SheetName="Sheet1" WorkbookPath="Config.xlsx">
         <ui:ReadCell.Result>
           <OutArgument x:TypeArguments="x:String">[MailAccount]</OutArgument>
         </ui:ReadCell.Result>
       </ui:ReadCell>
-      <ui:ReadCell WorkbookPathResource="{x:Null}" Cell="B2" DisplayName="Read Cell 'AttachmentPath'" sap:VirtualizedContainerService.HintSize="484,120" sap2010:WorkflowViewState.IdRef="ReadCell_2" SheetName="Sheet1" WorkbookPath="Config.xlsx">
+      <ui:ReadCell WorkbookPathResource="{x:Null}" Cell="B2" DisplayName="Read Cell 'AttachmentPath'" sap:VirtualizedContainerService.HintSize="484,120" sap2010:WorkflowViewState.IdRef="ReadCell_6" SheetName="Sheet1" WorkbookPath="Config.xlsx">
         <ui:ReadCell.Result>
           <OutArgument x:TypeArguments="x:String">[AttachmentPath]</OutArgument>
         </ui:ReadCell.Result>
       </ui:ReadCell>
-      <ui:ReadCell WorkbookPathResource="{x:Null}" Cell="B3" DisplayName="Read Cell 'DBString'" sap:VirtualizedContainerService.HintSize="484,120" sap2010:WorkflowViewState.IdRef="ReadCell_3" SheetName="Sheet1" WorkbookPath="Config.xlsx">
+      <ui:ReadCell WorkbookPathResource="{x:Null}" Cell="B3" DisplayName="Read Cell 'DBString'" sap:VirtualizedContainerService.HintSize="484,120" sap2010:WorkflowViewState.IdRef="ReadCell_7" SheetName="Sheet1" WorkbookPath="Config.xlsx">
         <ui:ReadCell.Result>
           <OutArgument x:TypeArguments="x:String">[DBString]</OutArgument>
         </ui:ReadCell.Result>
       </ui:ReadCell>
-      <ui:ReadCell WorkbookPathResource="{x:Null}" Cell="B4" DisplayName="Read Cell 'RPA_DEV_DBString'" sap:VirtualizedContainerService.HintSize="484,120" sap2010:WorkflowViewState.IdRef="ReadCell_4" SheetName="Sheet1" WorkbookPath="Config.xlsx">
+      <ui:ReadCell WorkbookPathResource="{x:Null}" Cell="B4" DisplayName="Read Cell 'RPA_DEV_DBString'" sap:VirtualizedContainerService.HintSize="484,120" sap2010:WorkflowViewState.IdRef="ReadCell_8" SheetName="Sheet1" WorkbookPath="Config.xlsx">
         <ui:ReadCell.Result>
           <OutArgument x:TypeArguments="x:String">[RPADBString]</OutArgument>
         </ui:ReadCell.Result>
       </ui:ReadCell>
-      <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="[AttachmentPath]" sap:VirtualizedContainerService.HintSize="484,453" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="True" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+      <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="[AttachmentPath]" sap:VirtualizedContainerService.HintSize="484,453" sap2010:WorkflowViewState.IdRef="ForEachFileX_2" IncludeSubDirectories="True" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
         <ui:ForEachFileX.Body>
           <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
             <ActivityAction.Argument1>
@@ -148,13 +165,13 @@
             <ActivityAction.Argument2>
               <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
             </ActivityAction.Argument2>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,163" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,163" sap2010:WorkflowViewState.IdRef="Sequence_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="416,103" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[CurrentFile.FullName]" />
+              <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="416,103" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[CurrentFile.FullName]" />
             </Sequence>
           </ActivityAction>
         </ui:ForEachFileX.Body>
@@ -165,15 +182,15 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ForEachFileX>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,48" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,48" sap2010:WorkflowViewState.IdRef="CommentOut_2">
         <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_11">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="TryCatch_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -181,10 +198,10 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <TryCatch.Try>
-                <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[DBString]" DatabaseConnection="[DBConnect]" />
+                <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[DBString]" DatabaseConnection="[DBConnect]" />
               </TryCatch.Try>
               <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -195,13 +212,13 @@
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                     </ActivityAction.Argument>
-                    <Sequence sap:VirtualizedContainerService.HintSize="467.2,278.4" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <Sequence sap:VirtualizedContainerService.HintSize="467.2,278.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+                      <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_11">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:String">[ExceptionMSG]</OutArgument>
                         </Assign.To>
@@ -209,7 +226,7 @@
                           <InArgument x:TypeArguments="x:String">[exception.Message.ToString]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_6">
+                      <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_12">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:String">[DBError]</OutArgument>
                         </Assign.To>
