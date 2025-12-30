@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome OAuth application authorized",
+  "Type": "Screen",
+  "Id": "1Wl7HM_SSE6qGUqAS-fn_A",
+  "Reference": "HziBb6DqZUW3HDpqysOHJQ/1Wl7HM_SSE6qGUqAS-fn_A",
+  "ParentRef": "HziBb6DqZUW3HDpqysOHJQ/vXOmgE4iekWnEdOVgCXwYg",
+  "Created": "2025-12-30T07:19:10.2684086Z",
+  "Updated": "2025-12-30T07:19:10.2684086Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.22.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
