@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -106,37 +106,162 @@
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1183.2,363.65666666666664" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1177.2,1784.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Chrome OAuth application authorized" HealingAgentBehavior="Job" sap:VirtualizedContainerService.HintSize="451.2,288" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="e4c46ed8-d753-453a-95e5-b84141b7faec" Version="V2">
-      <uix:NApplicationCard.Body>
-        <ActivityAction x:TypeArguments="x:Object">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="449.6,94.4" sap2010:WorkflowViewState.IdRef="Sequence_14">
+    <Sequence DisplayName="Initialize" sap:VirtualizedContainerService.HintSize="517.6,1761.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign sap:VirtualizedContainerService.HintSize="484,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[DBError]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="484,174.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[NewDTInput]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable">[New System.Data.DataTable]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="484,174.4" sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[FilterDtInput]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable">[New System.Data.DataTable]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="484,174.4" sap2010:WorkflowViewState.IdRef="Assign_4">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[NewDTInputInActive]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable">[New System.Data.DataTable]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:ReadCell WorkbookPathResource="{x:Null}" Cell="B1" DisplayName="Read Cell 'MailAccount'" sap:VirtualizedContainerService.HintSize="484,120" sap2010:WorkflowViewState.IdRef="ReadCell_1" SheetName="Sheet1" WorkbookPath="Config.xlsx">
+        <ui:ReadCell.Result>
+          <OutArgument x:TypeArguments="x:String">[MailAccount]</OutArgument>
+        </ui:ReadCell.Result>
+      </ui:ReadCell>
+      <ui:ReadCell WorkbookPathResource="{x:Null}" Cell="B2" DisplayName="Read Cell 'AttachmentPath'" sap:VirtualizedContainerService.HintSize="484,120" sap2010:WorkflowViewState.IdRef="ReadCell_2" SheetName="Sheet1" WorkbookPath="Config.xlsx">
+        <ui:ReadCell.Result>
+          <OutArgument x:TypeArguments="x:String">[AttachmentPath]</OutArgument>
+        </ui:ReadCell.Result>
+      </ui:ReadCell>
+      <ui:ReadCell WorkbookPathResource="{x:Null}" Cell="B3" DisplayName="Read Cell 'DBString'" sap:VirtualizedContainerService.HintSize="484,120" sap2010:WorkflowViewState.IdRef="ReadCell_3" SheetName="Sheet1" WorkbookPath="Config.xlsx">
+        <ui:ReadCell.Result>
+          <OutArgument x:TypeArguments="x:String">[DBString]</OutArgument>
+        </ui:ReadCell.Result>
+      </ui:ReadCell>
+      <ui:ReadCell WorkbookPathResource="{x:Null}" Cell="B4" DisplayName="Read Cell 'RPA_DEV_DBString'" sap:VirtualizedContainerService.HintSize="484,120" sap2010:WorkflowViewState.IdRef="ReadCell_4" SheetName="Sheet1" WorkbookPath="Config.xlsx">
+        <ui:ReadCell.Result>
+          <OutArgument x:TypeArguments="x:String">[RPADBString]</OutArgument>
+        </ui:ReadCell.Result>
+      </ui:ReadCell>
+      <ui:ForEachFileX DisplayName="For Each File in Folder" Folder="[AttachmentPath]" sap:VirtualizedContainerService.HintSize="484,453" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="True" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+        <ui:ForEachFileX.Body>
+          <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
+            <ActivityAction.Argument1>
+              <DelegateInArgument x:TypeArguments="si:FileInfo" Name="CurrentFile" />
+            </ActivityAction.Argument1>
+            <ActivityAction.Argument2>
+              <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
+            </ActivityAction.Argument2>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,163" sap2010:WorkflowViewState.IdRef="Sequence_16">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="416,103" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[CurrentFile.FullName]" />
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEachFileX.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ForEachFileX>
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,48" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_18">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <TryCatch.Try>
+                <ui:DatabaseConnect DisplayName="Connect to database" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[DBString]" DatabaseConnection="[DBConnect]" />
+              </TryCatch.Try>
+              <TryCatch.Catches>
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ActivityAction x:TypeArguments="s:Exception">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                    </ActivityAction.Argument>
+                    <Sequence sap:VirtualizedContainerService.HintSize="467.2,278.4" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[ExceptionMSG]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[exception.Message.ToString]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_6">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[DBError]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">Yes</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </ActivityAction>
+                </Catch>
+              </TryCatch.Catches>
+            </TryCatch>
           </Sequence>
-        </ActivityAction>
-      </uix:NApplicationCard.Body>
-      <uix:NApplicationCard.OCREngine>
-        <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
-          <ActivityFunc.Argument>
-            <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
-          </ActivityFunc.Argument>
-        </ActivityFunc>
-      </uix:NApplicationCard.OCREngine>
-      <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" ContentHash="nQr58LIAMUG9MEEjqDlidg" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAANcSURBVFhHtVdLa1NBGI1vF75l5t48GmNNDRjQRXAfBBE3LoRuREFd6MadxY0gMT9AfAVX7sU/oLsquKiCqF0IRRAfUBdaNa1Ci7XxnOl3Y3LzJb3mxgOHJN/jfHe+mbkzSURFsVhcn7T2iG9tzTdmHJzyrJ0j+d3Z4GMMYyUtPnLG+BC+4xlTBxsRWWcOc0Xm35HP5zdApAr+UApEInOpQS2RjQYZ9YQm2g+pFbkbGWv3Yz4/akJxSE1qSxkdbuT/oXhAanfthMx5W9uR8Bq8B/uXVntEfkPuffB5q5011DUBR7U1kEx63jn6yuXyWs/zzmLLfXK+5e03CfHH4CN8fwX7d/qgMwPbhWArYlseD/QCshZ9Tcii61jtvu8flBCHojGbYNtXqVRWi6mJRqOxKp1O781ms9vF5IAH392hi1ptUwED93lbEJlMJksS0jdSqVRW02ZNF8BWwaC+ZNC+Uy4oBtCxo5o2WHfTxFen4nRtQgd2iU7fwLTshNZnrQZrs/01zQn7JdGIDSzKM11q1Ogc15yZTGZE8mMjl8tt02qwNh9gqsOB9nNVS/5AAM33HXVQO+H2dNhh7VvJGxhQ7Fm4DmvzyX52OIyZlbyBgYMK12FttTWOnmclNzawBjaizny4Bmzv+ABPww4SW+Sk5MdGj60+kUgac0N1Ys4GtRBR6IFWg7XVwyIgEsdEo29gIKc1bZK1E4VCYTN+zIadwiU8RLVUKq0TvcjggcUBQGMxpBlwloebC0bg7abD2mspzzshR6yzYRQfEFNJWXsYL6gdLknB8PDwVizeQzjGLyP/TVNToe95tyQN1zBj8iiw4BzGfGUhPh1EXoQTYXuiHccEctW3apioNT9k7R5JWwaMV1uC6jhEMNjMCOxtBwm6c0xSOoCTr9wa243spqT8Ba9JobbfpV0uKxdhu84bUq8rNqcnyO9K1OiqgcvDEIKmJXiRZ7m4IgN5vyRf4zRrSKiOtLUHGCgJixj9Q3AMW+Y8Pq+Mjo6ukVAVzJHcMKepLWG9wflHq14qIo2V/vch5nc4B1qTvJpJSDTINb0Ctr3D+V6XEBWIWQpikbsAVlfK6QluF+zZmxCsYyRzvKKLSwUKzjAOn7VBXmrclTx85dbA6UP3tsjPFZBI/AF57FPSbdtFuAAAAABJRU5ErkJggg==" InformativeScreenshot="467cc1f31d5174850cd640ed04d87676.jpg" Reference="HziBb6DqZUW3HDpqysOHJQ/1Wl7HM_SSE6qGUqAS-fn_A" Selector="&lt;html app='chrome.exe' title='OAuth application authorized' /&gt;" Url="https://github.com/login/oauth/authorize?client_id=Iv1.1f122ab0adfec98d&amp;code_challenge=m_IOwAOoezpmmD7eA7b-Y3X27LjEnyTh76HiKhqVMCA&amp;code_challenge_method=S256&amp;nonce=umEKCFju0SFIEF3tRIyRBA&amp;redirect_uri=com.uipath.studio.oidc%3A%2F%2Foauthredirect%3Fclient_triggered_redirect%3Dtrue&amp;response_type=code&amp;scope=openid+repo+user&amp;skip_account_picker=true&amp;state=imaKSoXcKLtbu4Bc_umW2g" Version="V2" />
-      </uix:NApplicationCard.TargetApp>
-    </uix:NApplicationCard>
+        </ui:CommentOut.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:CommentOut>
+    </Sequence>
   </Sequence>
 </Activity>
