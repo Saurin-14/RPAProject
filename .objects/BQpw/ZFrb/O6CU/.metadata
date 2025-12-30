@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Chrome ChatGPT",
+  "Type": "Screen",
+  "Id": "O6CUR3inV0Kst4ProWY5-w",
+  "Reference": "HziBb6DqZUW3HDpqysOHJQ/O6CUR3inV0Kst4ProWY5-w",
+  "ParentRef": "HziBb6DqZUW3HDpqysOHJQ/ZFrbjgaj60KI8MG9mFVAbg",
+  "Created": "2025-12-30T06:41:58.8328637Z",
+  "Updated": "2025-12-30T06:41:58.8328637Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=25.10.22.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.10.1.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
